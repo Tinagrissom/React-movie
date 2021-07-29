@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 import MoviesList from "./components/MoviesList";
+import AddMovie from './components/AddMovie'
 import "./App.css";
 
 function App() {
@@ -48,7 +49,10 @@ function App() {
   }, [fetchMoviesHandler]);
   // this will fetch movies when app is loaded
   // [fetchMoviesHandler] is set as the dependancies, so it will only reload when this changes
-  
+
+  function addMovieHandler(movie) {
+    console.log(movie);
+  }
 
   let content = <p>Found no movies.</p>;
 
@@ -100,6 +104,9 @@ function App() {
 
   return (
     <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMovieHandler} />
+      </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
